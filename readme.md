@@ -37,4 +37,8 @@ If everything is okay, open a terminal window and type the following command:
 2. To validate captcha
 `curl --insecure -X POST -d "{\"captchaCode\":\"AB1D\", \"userInput\":\"ABD\"}" -H "Content-Type: application/json" https://localhost:5001/api/captcha/validate`
 
+![](images/Valid_Captcha.PNG)
+
+![](images/Valid_Captcha.PNG)
+
 **Note:** Service returns the captcha as a captcha byte stream
