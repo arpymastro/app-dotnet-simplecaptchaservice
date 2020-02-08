@@ -26,3 +26,11 @@ If you are going to use Visual Studio, be aware that you need to use [Visual Stu
 - Move to folder *service*
 - Open *SimpleCaptcha.API.sln* file
 - Hit *Ctlr+F5*
+
+If everything is okay, open a terminal window and type the following command:
+
+1. To generate captcha
+`curl --insecure https://localhost:5001/api/captcha/generate`
+
+2. To validate captcha
+`curl --insecure -X POST -d "{\"captchaCode\":\"AB1D\", \"userInput\":\"ABD\"}" -H "Content-Type: application/json" https://localhost:5001/api/captcha/validate`
