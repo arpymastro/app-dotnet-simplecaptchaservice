@@ -1,0 +1,57 @@
+﻿@model WebMvcApp.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<hr />
+
+@if (ViewBag.InvalidCaptcha == true)
+{
+    <div class="alert alert-danger" role="alert">
+        Invalid captcha code. <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+    </div>
+}
+
+<div class="card">
+    <div class="card-header">
+        Login with captcha service
+    </div>
+    <div class="card-body">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label asp-for="Email"></label>
+            <div class="input-group">
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <label asp-for="Password" class="control-label"></label>
+            <div class="input-group">
+                <input asp-for="Password" class="form-control" placeholder="Password" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <label asp-for="CaptchaText" class="control-label"></label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <img id="img-captcha" src="~/getcaptchaimage" />
+                </div>
+                <input asp-for="CaptchaText" class="form-control" maxlength="6" placeholder="Captcha" />
+                <span asp-validation-for="CaptchaText" class="text-danger"></span>
+            </div>
+
+            <br />
+
+            <div class="float-sm-right">
+                <div class="input-group">
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
