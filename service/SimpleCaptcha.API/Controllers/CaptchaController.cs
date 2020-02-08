@@ -57,6 +57,7 @@ namespace SimpleCaptcha.API.Controllers
         public IActionResult Post([FromBody] CaptchaRequest captchaRequest)
         {
             string methodName = "Post";
+            ValidateResult validateResult = null;
 
             try
             {
@@ -67,9 +68,11 @@ namespace SimpleCaptcha.API.Controllers
                 _logger.LogInformation($"[MethodEnd]:{_moduleName}-{methodName}");
 
                 if (isValid)
-                    return new ObjectResult(null) { StatusCode = (int)HttpStatusCode.OK };
+                    validateResult = new ValidateResult() { IsValid = isValid, HttpStatusCode = HttpStatusCode.OK };
                 else
-                    return new ObjectResult(null) { StatusCode = (int)HttpStatusCode.BadRequest };
+                    validateResult = new ValidateResult() { IsValid = isValid, HttpStatusCode = HttpStatusCode.BadRequest };
+
+                return new ObjectResult(validateResult) { StatusCode = (int)validateResult.HttpStatusCode };
             }
             catch (System.Exception ex)
             {

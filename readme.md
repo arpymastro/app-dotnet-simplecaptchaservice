@@ -11,3 +11,18 @@ Before starting to run the solution locally, you need to ensure you have install
 You should get as a result the value 3.0.100 or above. If don't, you should [download .NET Core 3.0 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0) and install it on your machine.
 
 If you are going to use Visual Studio, be aware that you need to use [Visual Studio 2019 16.3](https://devblogs.microsoft.com/visualstudio/dot-net-core-support-in-visual-studio-2019-version-16-3/) or [Visual Studio for Mac 8.3](https://devblogs.microsoft.com/visualstudio/visual-studio-2019-for-mac-version-8-3/) or above.  
+
+#### Steps to run
+
+##### Using .NET Core CLI
+
+- Clone the repository
+- In the terminal windows move to the *service\SimpleCaptcha.API* folder
+- run command `dotnet run`
+
+##### Using Visual Studio
+
+- Clone the repository
+- Move to folder *service*
+- Open *SimpleCaptcha.API.sln* file
+- Hit *Ctlr+F5*
