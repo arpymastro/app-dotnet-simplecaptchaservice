@@ -39,6 +39,6 @@ If everything is okay, open a terminal window and type the following command:
 
 ![](images/Valid_Captcha.PNG)
 
-![](images/Valid_Captcha.PNG)
+![](images/Invalid_Captcha.PNG)
 
 **Note:** Service returns the captcha as a captcha byte stream
