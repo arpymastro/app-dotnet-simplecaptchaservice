@@ -80,7 +80,12 @@ namespace SimpleCaptcha.API.Services
             return result;
         }
 
-
+        /// <summary>
+        /// ValidateCaptcha() method is used for validating the user input and actual captcha code
+        /// </summary>
+        /// <param name="actualCaptchaCode"></param>
+        /// <param name="userInput"></param>
+        /// <returns></returns>
         public bool ValidateCaptcha(string actualCaptchaCode, string userInput)
         {
             var methodName = "ValidateCaptcha";
@@ -88,6 +93,9 @@ namespace SimpleCaptcha.API.Services
             try
             {
                 _logger.LogInformation($"[MethodStart]:{_moduleName}-{methodName}");
+
+                if (string.IsNullOrWhiteSpace(actualCaptchaCode) || string.IsNullOrWhiteSpace(userInput))
+                    throw new ArgumentNullException();
 
                 if (actualCaptchaCode.Equals(userInput))
                     isValid = true;
@@ -107,7 +115,6 @@ namespace SimpleCaptcha.API.Services
         #endregion
 
         #region private variable
-
         private string GetCaptchaCode()
         {
             string letters = "12346789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
